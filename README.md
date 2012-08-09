@@ -1,0 +1,4 @@
+Animator
+========
+
+jQuery Plugin Animator
