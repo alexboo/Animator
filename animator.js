@@ -221,9 +221,12 @@
 
             var elementId = this.getElementId(element);
 
-            element.attr('class', jQuery.trim(element.attr('class').replace(/(animate-[0-9]*)/gi, '')));
+	    if ( element.attr('class') ) {
+	    
+		element.attr('class', jQuery.trim(element.attr('class').replace(/(animate-[0-9]*)/gi, '')));
 
-            delete Animator.animations[elementId];
+		delete Animator.animations[elementId];
+	    }
 
         };
 
@@ -266,11 +269,21 @@
 
         this.addAnimation = function(animations, time, params) {
             this.animator.addAnimation($(this), animations, time, params);
+	    
+	    return this;
         };
 
         this.removeAnimation = function() {
-            this.animator.removeAnimation($(this))
+            this.animator.removeAnimation($(this));
+	    
+	    return this;
         };
+	
+	this.addType = function(name, type) {
+	    this.animator.addType(name, type);
+	    
+	    return this;
+	}
 
         return this;
     };
